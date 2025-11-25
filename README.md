@@ -1,165 +1,213 @@
-# 📦 Storify – Smart E-Commerce Platform  
-A smart, secure, and scalable e-commerce web application connecting **Customers**, **Sellers**, and **Admins** in one integrated platform.
+📦 Storify – Smart E-Commerce Platform
 
----
+A smart, secure, and scalable e-commerce web application connecting Customers, Sellers, and Admins in one integrated platform.
 
-## 📘 Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [System Architecture](#system-architecture)
-- [User Roles](#user-roles)
-- [Tech Stack](#tech-stack)
-- [Functional Requirements](#functional-requirements)
-- [Non-Functional Requirements](#non-functional-requirements)
-- [Use Cases](#use-cases)
-- [Database Entities](#database-entities)
-- [Team Members](#team-members)
+📘 Table of Contents
 
----
+Overview
 
-## 📝 Overview
-Storify is a smart e-commerce system designed to streamline the online shopping experience while providing sellers with efficient product management tools and admins with complete platform oversight.
+Features
 
-The platform includes:
-- Product browsing, filtering, and purchasing for customers.
-- Full product and order management for sellers.
-- User and system monitoring for administrators.
+System Architecture
 
----
+User Roles
 
-## ✨ Features
+Tech Stack
 
-### 👤 **Customer**
-- Register/Login securely  
-- Browse and filter products  
-- Add to cart & checkout  
-- Secure online payment  
-- Track orders  
-- Rate and review purchased products  
-- Contact customer support  
+Functional Requirements
 
-### 🛍️ **Seller**
-- Create/verify store profile  
-- Add, edit, delete products  
-- Manage stock  
-- View customer orders  
-- Receive system alerts (low stock, feedback)  
-- Reply to customer queries  
+Non-Functional Requirements
 
-### 🛠️ **Admin**
-- Manage customer & seller accounts  
-- Approve products and stores  
-- Monitor system activity  
-- View reports & handle complaints  
-- Manage notifications  
+Use Cases
 
----
+Database Entities
 
-## 🧱 System Architecture
-Storify follows a modular architecture consisting of:
+Team Members
 
-- **Authentication Module** – registration, login, verification  
-- **Product Management Module**  
-- **Order & Payment Module**  
-- **Notification Module**  
-- **Checker Module (Automated Stock Monitor)**  
-- **Admin Module**  
-- **Customer Support Module**
+License
 
----
+Contact
 
-## 👥 User Roles
-| Role | Description |
-|------|-------------|
-| **Customer** | Browses and buys products |
-| **Seller** | Manages store products & orders |
-| **Admin** | Controls system operations and verifies users/products |
+📝 Overview
 
----
+Storify is a smart e-commerce platform designed to streamline online shopping for customers, provide efficient product management tools for sellers, and offer comprehensive monitoring and control for administrators.
 
-## 🧰 Tech Stack
-**Frontend:** HTML, CSS, JavaScript  
-**Backend:** Python (Flask)  
-**Database:** MySQL  
-**External Services:** Payment Gateway (PayPal/Stripe)  
-**Protocols:** HTTPS, SMTP (Notifications)
+Key capabilities include:
 
----
+Product browsing, filtering, and purchasing for customers.
 
-## ✅ Functional Requirements
+Full product and order management for sellers.
 
-### **Customers**
-- Secure login/logout  
-- Search/filter products  
-- Add to cart & checkout  
-- Online payments  
-- View order history  
-- Review products  
+User and system monitoring for administrators.
 
-### **Sellers**
-- Manage store profile  
-- Add/update/remove products  
-- Manage orders  
-- Receive notifications  
+✨ Features
+👤 Customer
 
-### **Admin**
-- Approve products and sellers  
-- Manage all system users  
-- Handle reports and complaints  
+Secure registration and login
 
-### **System**
-- Automatic notifications  
-- Stock monitoring checker  
-- Secure data transactions  
+Browse and filter products
 
----
+Add to cart & checkout
 
-## 🔐 Non-Functional Requirements
-- **Performance**: Supports 200 concurrent users  
-- **Security**: Encrypted passwords, HTTPS  
-- **Usability**: Simple & responsive UI  
-- **Reliability**: 99% uptime, daily backups  
-- **Scalability**: Handles growth in users/products  
-- **Maintainability**: Modular code structure  
+Secure online payment
 
----
+Track orders
 
-## 🧩 Use Cases
-### 📌 Main Actors:
-- Customer  
-- Seller  
-- Admin  
+Rate and review purchased products
 
-### Includes:
-- Login/Authentication  
-- Product Management  
-- Order & Payment Workflow  
-- Notification Handling  
+Contact customer support
 
----
+🛍️ Seller
 
-## 🗂️ Database Entities
-| Table | Attributes |
-|-------|------------|
-| **User** | UserID, Name, Email, Password, Role |
-| **Product** | ProductID, Name, Description, Price, Stock, SellerID |
-| **Order** | OrderID, CustomerID, TotalAmount, PaymentID, Date |
-| **Payment** | PaymentID, Method, Status, Amount |
-| **Notification** | NotificationID, UserID, Message, Date |
+Create and verify store profile
 
----
+Add, edit, and delete products
 
-## 👥 Team Members (Team #28)
-- **Ahmed Tamer** — ID: 202401457  
-- **Omar Ahmed** — ID: 202400354  
-- **Samaa Khaled** — ID: 202401280  
+Manage stock and inventory
 
----
+View customer orders
 
-## 📄 License
-This project is part of **CSAI203 – Introduction to Software Engineering** coursework.
+Receive system alerts (low stock, feedback)
 
----
+Respond to customer queries
 
-## 📧 Contact
-For project inquiries, please contact the team.
+🛠️ Admin
+
+Manage customer and seller accounts
+
+Approve products and stores
+
+Monitor system activity
+
+View reports and handle complaints
+
+Manage notifications
+
+🧱 System Architecture
+
+Storify uses a modular architecture with the following components:
+
+Authentication Module – Handles registration, login, and verification
+
+Product Management Module – Manages product listings and updates
+
+Order & Payment Module – Handles order processing and payment workflows
+
+Notification Module – Sends alerts and updates to users
+
+Checker Module – Monitors stock and system status automatically
+
+Admin Module – Manages platform oversight and approvals
+
+Customer Support Module – Handles inquiries and complaints
+
+👥 User Roles
+Role	Description
+Customer	Browses and purchases products
+Seller	Manages store products & orders
+Admin	Oversees system operations & users
+🧰 Tech Stack
+
+Frontend: HTML, CSS, JavaScript
+
+Backend: Python (Flask)
+
+Database: MySQL
+
+External Services: Payment Gateway (PayPal/Stripe)
+
+Protocols: HTTPS, SMTP for notifications
+
+✅ Functional Requirements
+
+Customer
+
+Secure login/logout
+
+Search and filter products
+
+Add to cart & checkout
+
+Online payments
+
+View order history
+
+Review products
+
+Seller
+
+Manage store profile
+
+Add/update/remove products
+
+Manage orders
+
+Receive notifications
+
+Admin
+
+Approve products and sellers
+
+Manage all system users
+
+Handle reports and complaints
+
+System
+
+Automatic notifications
+
+Stock monitoring
+
+Secure data transactions
+
+🔐 Non-Functional Requirements
+
+Performance: Supports up to 200 concurrent users
+
+Security: Encrypted passwords, HTTPS secure connections
+
+Usability: Simple, responsive, and intuitive UI
+
+Reliability: 99% uptime, daily backups
+
+Scalability: Handles increasing users and products
+
+Maintainability: Modular, organized code structure
+
+🧩 Use Cases
+
+Actors: Customer, Seller, Admin
+
+Key Workflows:
+
+Login and Authentication
+
+Product Management
+
+Order and Payment Workflow
+
+Notifications and Alerts
+
+🗂️ Database Entities
+Table	Attributes
+User	UserID, Name, Email, Password, Role
+Product	ProductID, Name, Description, Price, Stock, SellerID
+Order	OrderID, CustomerID, TotalAmount, PaymentID, Date
+Payment	PaymentID, Method, Status, Amount
+Notification	NotificationID, UserID, Message, Date
+👥 Team Members (Team #28)
+
+Ahmed Tamer — ID: 202401457
+
+Omar Ahmed — ID: 202400354
+
+Samaa Khaled — ID: 202401280
+
+📄 License
+
+This project is part of CSAI203 – Introduction to Software Engineering coursework.
+
+📧 Contact
+
+For any inquiries regarding the Storify project, please contact:
+Omar Elgazar – omarelgazar715@gmail.com
