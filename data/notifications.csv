@@ -1,1 +1,1 @@
-notification_id,user_id,message,is_read,created_at
+notification_id,user_id,message,type,is_read,created_at
