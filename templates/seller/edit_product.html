@@ -1,38 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Edit Product</title>
     <style>
-        body { font-family: Arial; margin: 30px; }
-        h1 { color: #444; }
-        form { border: 1px solid #ccc; padding: 20px; width: 300px; }
-        label { display: block; margin-top: 10px; }
-        input[type="text"], input[type="number"] {
-            width: 100%; padding: 8px; margin-top: 5px;
-        }
-        button {
-            margin-top: 15px;
-            padding: 10px 15px;
-        }
+      body {
+        font-family: Arial;
+        margin: 30px;
+      }
+      h1 {
+        color: #444;
+      }
+      form {
+        border: 1px solid #ccc;
+        padding: 20px;
+        width: 300px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+      }
+      input[type="text"],
+      input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+      }
+      button {
+        margin-top: 15px;
+        padding: 10px 15px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <h1>Edit Product</h1>
 
-<h1>Edit Product</h1>
+    <form action="/seller/products/{{ product.id }}/edit" method="POST">
+      <label>Name:</label>
+      <input type="text" name="name" value="{{ product.name }}" required />
 
-<form action="/seller/products/{{ product.id }}/edit" method="POST">
+      <label>Price:</label>
+      <input
+        type="number"
+        name="price"
+        value="{{ product.price }}"
+        step="0.01"
+        required
+      />
 
-    <label>Name:</label>
-    <input type="text" name="name" value="{{ product.name }}" required>
+      <label>Status:</label>
+      <input type="text" name="status" value="{{ product.status }}" required />
 
-    <label>Price:</label>
-    <input type="number" name="price" value="{{ product.price }}" step="0.01" required>
-
-    <label>Status:</label>
-    <input type="text" name="status" value="{{ product.status }}" required>
-
-    <button type="submit">Save Changes</button>
-</form>
-
-</body>
+      <button type="submit">Save Changes</button>
+    </form>
+  </body>
 </html>

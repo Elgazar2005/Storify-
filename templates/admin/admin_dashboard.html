@@ -1,36 +1,86 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Admin Dashboard</title>
     <style>
-        body { font-family: Arial; margin: 30px; }
-        h1 { color: #444; }
-        ul { margin-bottom: 20px; }
-        a { color: blue; text-decoration: none; }
+      body {
+        font-family: Arial;
+        margin: 30px;
+      }
+      h1 {
+        margin-bottom: 20px;
+      }
+      .nav a {
+        margin-right: 15px;
+        text-decoration: none;
+        color: blue;
+        font-weight: bold;
+      }
+      .section {
+        margin-top: 30px;
+      }
+      table {
+        width: 60%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 1px solid #444;
+        padding: 8px;
+        text-align: left;
+      }
+      th {
+        background: #eee;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
+    <h1>Admin Dashboard</h1>
 
-<h1>Admin Dashboard</h1>
+    <div class="nav">
+      <a href="{{ url_for('admin_verify_sellers') }}">Verify Sellers</a>
+      <a href="{{ url_for('logout') }}">Logout</a>
+    </div>
 
-<h3>Users</h3>
-<ul>
-    {% for u in users %}
-        <li>{{ u.username }} — ({{ u.role }})</li>
-    {% endfor %}
-</ul>
+    <div class="section">
+      <h2>All Users</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Role</th>
+        </tr>
+        {% for u in users %}
+        <tr>
+          <td>{{ u.id }}</td>
+          <td>{{ u.username }}</td>
+          <td>{{ u.email }}</td>
+          <td>{{ u.role }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
 
-<h3>Products</h3>
-<ul>
-    {% for p in products %}
-        <li>{{ p.name }} — ${{ p.price }}</li>
-    {% endfor %}
-</ul>
-
-<p>
-    <a href="./verify_sellers.html">Verify Sellers</a> |
-    <a href="./verify_products.html">Verify Products</a>
-</p>
-
-</body>
+    <div class="section">
+      <h2>Products</h2>
+      <table>
+        <tr>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Stock</th>
+        </tr>
+        {% for p in products %}
+        <tr>
+          <td>{{ p.id }}</td>
+          <td>{{ p.name }}</td>
+          <td>{{ p.price }}</td>
+          <td>{{ p.stock }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </body>
 </html>
