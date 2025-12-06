@@ -80,7 +80,7 @@ Storify follows a modular architecture consisting of:
 ## 🧰 Tech Stack
 **Frontend:** HTML, CSS, JavaScript  
 **Backend:** Python (Flask)  
-**Database:** MySQL  
+**Database:** CSV  
 **External Services:** Payment Gateway (PayPal/Stripe)  
 **Protocols:** HTTPS, SMTP (Notifications)
 
