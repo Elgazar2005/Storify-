@@ -2,10 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Your Cart</title>
 </head>
 <body>
-    
+    <h1>Your Cart</h1>
+
+    {% if not cart %}
+        <p>No open cart found.</p>
+    {% else %}
+        {% if items|length == 0 %}
+            <p>Your cart is empty.</p>
+        {% else %}
+            <table border="1" cellpadding="8">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Subtotal</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% set total = 0 %}
+                    {% for row in items %}
+                        {% set item = row.item %}
+                        {% set product = row.product %}
+                        {% set subtotal = product.price * item.quantity %}
+                        {% set total = total + subtotal %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ subtotal }}</td>
+                            <td>
+                                <form action="{{ url_for('cart.remove_from_cart', product_id=product.id) }}" method="post">
+                                    <button type="submit">Remove</button>
+                                </form>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            <h3>Total: {{ total }} EGP</h3>
+        {% endif %}
+    {% endif %}
+
+    <p><a href="{{ url_for('product.list_products') }}">Back to products</a></p>
 </body>
 </html>
