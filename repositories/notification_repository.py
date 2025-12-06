@@ -14,11 +14,12 @@ class NotificationRepository:
                 reader = csv.DictReader(file) #change file to dictonary
                 for row in reader:
                     # make opeject of notification that story each row  and after that put it in empty list
-                    notifications.append(Notification(
-                        id=row["id"],
+                   notifications.append(Notification(
+                        notification_id=row["notification_id"],
                         user_id=row["user_id"],
                         message=row["message"],
-                        status=row.get("status", "unread"),
+                        type=row["type"],
+                        is_read=row["is_read"] == "True",
                         created_at=row["created_at"]
                     ))
         except FileNotFoundError: # we use this to check if file is here or not if here use try if isnot go to bulid in function is
@@ -38,7 +39,14 @@ class NotificationRepository:
     def add_notification(user_id, message, notif_type="general"):#this function is used to addnew_notif
         new_id = NotificationRepository._get_next_id() #make new id to the ne notification
         created_at = datetime.now().strftime("%Y-%m-%d %H:%M:%S")#put the exactly time that created notification
-        new_notification = Notification(new_id, user_id, message, notif_type, False, created_at) #create the object
+        new_notification = Notification(
+            notification_id=new_id,
+            user_id=user_id,
+            message=message,
+            type=notif_type,
+            is_read=False,
+            created_at=created_at
+        ) #create the object
 
         fieldnames = ["notification_id","user_id","message","type","is_read","created_at"]
         try:
