@@ -3,5 +3,6 @@ id,username,email,password,role
 2,mohmed,mohmed@gmail.com,123456,seller
 3,ahmed,ahmed@gmail.com,123456,customer
 4,admin,admin@gmail.com,admin123,admin
+5,ahmed,ahmedd@gmail.com,123456,customer
 
 
