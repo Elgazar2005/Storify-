@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Add Product</title>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 40px;
+      }
+      h1 {
+        color: #333;
+      }
+      form {
+        width: 300px;
+      }
+      label {
+        display: block;
+        margin-top: 10px;
+        font-weight: bold;
+      }
+      input,
+      textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+      }
+      button {
+        margin-top: 15px;
+        padding: 10px;
+        width: 100%;
+        background: #333;
+        color: white;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Add New Product</h1>
+
+    <form action="/seller/add_product" method="POST">
+      <label>Product Name</label>
+      <input type="text" name="name" required />
+
+      <label>Price</label>
+      <input type="number" name="price" required />
+
+      <label>Description</label>
+      <textarea name="description" rows="4" required></textarea>
+
+      <button type="submit">Add Product</button>
+    </form>
+  </body>
+</html>

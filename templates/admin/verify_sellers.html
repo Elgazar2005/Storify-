@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Verify Sellers</title>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 30px;
+      }
+      li {
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Verify Sellers</h1>
+
+    <ul>
+      {% for s in sellers %}
+      <li>{{ s.username }} — {{ s.email }}</li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

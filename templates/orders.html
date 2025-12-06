@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Seller Orders</title>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 30px;
+      }
+      h1 {
+        color: #444;
+      }
+      .order {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 12px;
+      }
+      .items {
+        margin-left: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Orders for Your Products</h1>
+
+    {% if orders %} {% for order in orders %}
+    <div class="order">
+      <h3>Order #{{ order.id }}</h3>
+      <p><strong>Customer:</strong> {{ order.customer_name }}</p>
+      <p><strong>Total Price:</strong> ${{ order.total_price }}</p>
+      <h4>Items:</h4>
+
+      <ul class="items">
+        {% for item in order.items %}
+        <li>
+          {{ item.product_name }} — Qty: {{ item.quantity }} — ${{ item.price }}
+        </li>
+        {% endfor %}
+      </ul>
+
+      <p><strong>Status:</strong> {{ order.status }}</p>
+    </div>
+    {% endfor %} {% else %}
+    <p>No orders found.</p>
+    {% endif %}
+  </body>
+</html>

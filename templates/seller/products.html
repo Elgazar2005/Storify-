@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Products</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 30px;
+        }
+        h1 {
+            color: #444;
+        }
+        .product {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Your Products</h1>
+
+{% for p in products %}
+    <div class="product">
+        <h3>{{ p.name }}</h3>
+        <p>Price: ${{ p.price }}</p>
+        <p>Status: {{ p.status }}</p>
+        <a href="./edit_product.html{{p.id }}/edit">Edit</a>
+    </div>
+{% endfor %}
+
+</body>
+</html>

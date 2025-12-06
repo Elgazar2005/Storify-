@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Verify Products</title>
+    <style>
+        body { font-family: Arial; margin: 30px; }
+        li { margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+<h1>Verify Products</h1>
+
+<ul>
+    {% for p in products %}
+        <li>{{ p.name }} — ${{ p.price }} — Status: {{ p.status }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

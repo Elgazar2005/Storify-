@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Seller Orders</title>
+    <style>
+      body {
+        font-family: Arial;
+        margin: 30px;
+      }
+      h1 {
+        color: #444;
+      }
+      .order {
+        border: 1px solid #ccc;
+        padding: 15px;
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Orders for Your Products</h1>
+
+    {% for o in orders %}
+    <div class="order">
+      <p><strong>Order ID:</strong> {{ o.id }}</p>
+      <p><strong>Customer:</strong> {{ o.customer_name }}</p>
+      <p><strong>Total:</strong> ${{ o.total }}</p>
+      <p><strong>Status:</strong> {{ o.status }}</p>
+    </div>
+    {% endfor %}
+  </body>
+</html>
