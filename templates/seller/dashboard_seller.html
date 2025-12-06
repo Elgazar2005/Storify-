@@ -31,7 +31,7 @@
         <li>{{ p.name }} — ${{ p.price }}</li>
         {% endfor %}
       </ul>
-      <a href="./products.html">Manage Products</a>
+      <a href="{{ url_for('my_products') }}">Manage Products</a>
     </div>
 
     <div class="box">
@@ -48,10 +48,10 @@
     </div>
 
     <div>
-      <a href="./seller_order.html">View Orders</a>
+      <a href="{{ url_for('seller_orders') }}">View Orders</a>
     </div>
     <div>
-      <a href="./add_product.html">Add product</a>
+      <a href="{{ url_for('add_product') }}">Add Product</a>
     </div>
   </body>
 </html>

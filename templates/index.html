@@ -34,9 +34,9 @@
       <h1>Welcome to Storify</h1>
 
       <div class="nav">
-        <a href="./login.html">Login</a>
-        <a href="./singup.html">Sign Up</a>
-        <a href="./products.html">Browse Products</a>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('signup') }}">Sign Up</a>
+        <a href="{{ url_for('list_products') }}">Browse Products</a>
       </div>
     </header>
 
@@ -48,7 +48,7 @@
     <div class="box">
       <h2>Start Shopping</h2>
       <p>Explore hundreds of items from different sellers.</p>
-      <a href="./products.html">Go to Products →</a>
+      <a href="{{ url_for('list_products') }}">Go to Products →</a>
     </div>
   </body>
 </html>
