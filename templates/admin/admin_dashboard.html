@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+    <style>
+        body { font-family: Arial; margin: 30px; }
+        h1 { color: #444; }
+        ul { margin-bottom: 20px; }
+        a { color: blue; text-decoration: none; }
+    </style>
+</head>
+<body>
+
+<h1>Admin Dashboard</h1>
+
+<h3>Users</h3>
+<ul>
+    {% for u in users %}
+        <li>{{ u.username }} — ({{ u.role }})</li>
+    {% endfor %}
+</ul>
+
+<h3>Products</h3>
+<ul>
+    {% for p in products %}
+        <li>{{ p.name }} — ${{ p.price }}</li>
+    {% endfor %}
+</ul>
+
+<p>
+    <a href="./verify_sellers.html">Verify Sellers</a> |
+    <a href="./verify_products.html">Verify Products</a>
+</p>
+
+</body>
+</html>

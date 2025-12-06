@@ -2,23 +2,53 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./static/index.css">
-    <title>Storify</title>
+    <title>Storify - Home</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 30px;
+        background-color: #f8f8f8;
+      }
+      header {
+        margin-bottom: 30px;
+      }
+      h1 {
+        color: #333;
+      }
+      .nav a {
+        margin-right: 15px;
+        text-decoration: none;
+        color: blue;
+        font-size: 18px;
+      }
+      .box {
+        background: #fff;
+        padding: 20px;
+        border: 1px solid #ddd;
+        margin-top: 20px;
+      }
+    </style>
   </head>
   <body>
-    <nav class="navbar">
-      <div class="logo">
-        <a href="index.html">Storify</a>
-      </div>
+    <header>
+      <h1>Welcome to Storify</h1>
 
-      <ul class="nav-links">
-        <li><a href="products.html">Products</a></li>
-        <li><a href="cart.html">Cart</a></li>
-        <li><a href="orders.html">Orders</a></li>
-        <li><a href="login.html">Login</a></li>
-        <li><a href="signup.html">Sign Up</a></li>
-      </ul>
-    </nav>
+      <div class="nav">
+        <a href="./login.html">Login</a>
+        <a href="./singup.html">Sign Up</a>
+        <a href="./products.html">Browse Products</a>
+      </div>
+    </header>
+
+    <div class="box">
+      <h2>About Storify</h2>
+      <p>Your simple marketplace to buy and sell products.</p>
+    </div>
+
+    <div class="box">
+      <h2>Start Shopping</h2>
+      <p>Explore hundreds of items from different sellers.</p>
+      <a href="./products.html">Go to Products →</a>
+    </div>
   </body>
 </html>
