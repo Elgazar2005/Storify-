@@ -2,53 +2,146 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
     <title>Storify - Home</title>
+
     <style>
-      body {
-        font-family: Arial, sans-serif;
-        margin: 30px;
-        background-color: #f8f8f8;
+      .hero {
+        background: linear-gradient(135deg, #0d6efd, #6610f2);
+        color: white;
+        padding: 100px 20px;
       }
-      header {
-        margin-bottom: 30px;
+
+      .feature-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
-      h1 {
-        color: #333;
-      }
-      .nav a {
-        margin-right: 15px;
-        text-decoration: none;
-        color: blue;
-        font-size: 18px;
-      }
-      .box {
-        background: #fff;
-        padding: 20px;
-        border: 1px solid #ddd;
-        margin-top: 20px;
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
       }
     </style>
   </head>
+
   <body>
-    <header>
-      <h1>Welcome to Storify</h1>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark px-4 fixed-top">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold" href="/">Storify</a>
 
-      <div class="nav">
-        <a href="{{ url_for('login') }}">Login</a>
-        <a href="{{ url_for('signup') }}">Sign Up</a>
-        <a href="{{ url_for('list_products') }}">Browse Products</a>
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="/">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link fw-bold text-white"
+                href="{{ url_for('list_products') }}"
+              >
+                Products
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="#">About</a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="btn btn-light fw-bold ms-lg-3"
+                href="{{ url_for('login') }}"
+              >
+                Login
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </header>
+    </nav>
 
-    <div class="box">
-      <h2>About Storify</h2>
-      <p>Your simple marketplace to buy and sell products.</p>
-    </div>
+    <!-- Hero -->
+    <section class="hero text-center">
+      <h1 class="display-4 fw-bold">Shop Smart. Live Better.</h1>
+      <p class="fs-5 mt-3">
+        Discover amazing products with fast delivery and secure payments.
+      </p>
+      <a
+        href="{{ url_for('list_products') }}"
+        class="btn btn-light btn-lg mt-4 fw-bold"
+      >
+        Start Shopping
+      </a>
+    </section>
 
-    <div class="box">
-      <h2>Start Shopping</h2>
-      <p>Explore hundreds of items from different sellers.</p>
-      <a href="{{ url_for('list_products') }}">Go to Products →</a>
-    </div>
+    <!-- Features -->
+    <section class="container my-5">
+      <div class="row text-center g-4">
+        <div class="col-md-4">
+          <div class="card feature-card shadow-sm p-4">
+            <h3>🚚 Fast Delivery</h3>
+            <p class="text-muted">
+              Get your products delivered quickly and safely.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card feature-card shadow-sm p-4">
+            <h3>💳 Secure Payment</h3>
+            <p class="text-muted">
+              Your payments are protected with high security.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="card feature-card shadow-sm p-4">
+            <h3>⭐ Trusted Sellers</h3>
+            <p class="text-muted">
+              Buy from verified sellers with real reviews.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-light py-5 text-center">
+      <h2 class="fw-bold">Ready to explore?</h2>
+      <p class="text-muted fs-5">
+        Join Storify today and enjoy a seamless shopping experience.
+      </p>
+      <a href="{{ url_for('signup') }}" class="btn btn-primary btn-lg mt-3">
+        Create Account
+      </a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3">
+      © 2025 Storify. All rights reserved.
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
   </body>
 </html>

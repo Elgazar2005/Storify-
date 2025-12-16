@@ -1,45 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-       
     <meta charset="UTF-8" />
-       
     <title>Products</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
   </head>
-  <body>
-       
-    <h1>All Products</h1>
 
-       
-    <div>
-              {% for product in products %}            
-      <div style="border: 1px solid #ccc; margin: 10px; padding: 10px">
-                       
-        <h2>{{ product.name }}</h2>
-                       
-        <p>{{ product.description }}</p>
-                       
-        <p>Price: {{ product.price }} EGP</p>
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark px-4 fixed-top">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold" href="/">Storify</a>
 
-                       
-        <a
-          href="{{ url_for('product.product_details', product_id=product.id) }}"
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
         >
-                              View Details                
-        </a>
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-                       
-        <form
-          action="{{ url_for('cart.add_to_cart', product_id=product.id) }}"
-          method="post"
-        >
-                             
-          <input type="number" name="quantity" value="1" min="1" />            
-                  <button type="submit">Add to Cart</button>                
-        </form>
-                   
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="/">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link fw-bold text-white"
+                href="{{ url_for('list_products') }}"
+              >
+                Products
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="#">About</a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="btn btn-light fw-bold ms-lg-3"
+                href="{{ url_for('login') }}"
+              >
+                Login
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-              {% endfor %}    
+    </nav>
+
+    <div class="container py-5">
+      <h1 class="text-center mb-4 mt-3">All Products</h1>
+
+      <div class="row">
+        {% for product in products %}
+        <div class="col-md-4 mb-4">
+          <div class="card shadow-sm h-100">
+            <img
+              src="{{ product.image }}"
+              class="card-img-top"
+              alt="{{ product.name }}"
+            />
+
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text text-muted">{{ product.description }}</p>
+              <p class="fw-bold">Price: {{ product.price }} EGP</p>
+
+              <a
+                href="{{ url_for('product.product_details', product_id=product.id) }}"
+                class="btn btn-primary w-100 mb-2"
+              >
+                View Details
+              </a>
+
+              <form
+                action="{{ url_for('cart.add_to_cart', product_id=product.id) }}"
+                method="post"
+              >
+                <div class="input-group">
+                  <input
+                    type="number"
+                    name="quantity"
+                    value="1"
+                    min="1"
+                    class="form-control"
+                  />
+                  <button type="submit" class="btn btn-success">
+                    Add to Cart
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
     </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
   </body>
 </html>
