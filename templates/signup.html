@@ -1,8 +1,120 @@
-<h1>Signup</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Signup</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/bootstrap.min.css') }}"
+    />
 
-<form method="post">
-    <input type="text" name="username" placeholder="Username"><br>
-    <input type="email" name="email" placeholder="Email"><br>
-    <input type="password" name="password" placeholder="Password"><br>
-    <button type="submit">Create Account</button>
-</form>
+    <style>
+      body {
+        background: #f2f2f2;
+      }
+      .signup-card {
+        max-width: 450px;
+        margin: 80px auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg bg-primary navbar-dark px-4 fixed-top">
+      <div class="container-fluid">
+        <!-- Brand -->
+        <a class="navbar-brand fw-bold" href="/">Storify</a>
+
+        <!-- Toggler -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="/">Home</a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="nav-link fw-bold text-white"
+                href="{{ url_for('list_products') }}"
+              >
+                Products
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fw-bold text-white" href="#">About</a>
+            </li>
+
+            <li class="nav-item">
+              <a
+                class="btn btn-light fw-bold ms-lg-3"
+                href="{{ url_for('login') }}"
+              >
+                Login
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="card shadow signup-card p-4">
+      <h3 class="text-center mb-3">Create Account</h3>
+
+      <form method="post">
+        <div class="mb-3">
+          <label class="form-label">Username</label>
+          <input
+            type="text"
+            name="username"
+            class="form-control"
+            placeholder="Enter your username"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Email</label>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Enter your email"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label">Password</label>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter password"
+          />
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">
+          Create Account
+        </button>
+      </form>
+
+      <p class="text-center mt-3">
+        Already have an account?
+        <a href="{{ url_for('login') }}">Login</a>
+      </p>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+  </body>
+</html>

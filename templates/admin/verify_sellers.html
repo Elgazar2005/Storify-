@@ -1,24 +1,47 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <title>Verify Sellers</title>
-    <style>
-      body {
-        font-family: Arial;
-        margin: 30px;
-      }
-      li {
-        margin-bottom: 10px;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Verify Sellers</h1>
 
-    <ul>
-      {% for s in sellers %}
-      <li>{{ s.username }} — {{ s.email }}</li>
-      {% endfor %}
-    </ul>
-  </body>
+    <!-- Bootstrap CDN -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+    >
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <h1 class="mb-4 text-center">Verify Sellers</h1>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                <ul class="list-group">
+                    {% for s in sellers %}
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <div>
+                                <strong>{{ s.username }}</strong><br>
+                                <small class="text-muted">{{ s.email }}</small>
+                            </div>
+
+                            <!-- Example verify button if needed -->
+                            <a href="/verify_seller/{{ s.id }}" class="btn btn-success btn-sm">
+                                Verify
+                            </a>
+                        </li>
+                    {% endfor %}
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
 </html>

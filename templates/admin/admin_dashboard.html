@@ -1,86 +1,85 @@
 <!DOCTYPE html>
-<html>
-  <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
     <title>Admin Dashboard</title>
-    <style>
-      body {
-        font-family: Arial;
-        margin: 30px;
-      }
-      h1 {
-        margin-bottom: 20px;
-      }
-      .nav a {
-        margin-right: 15px;
-        text-decoration: none;
-        color: blue;
-        font-weight: bold;
-      }
-      .section {
-        margin-top: 30px;
-      }
-      table {
-        width: 60%;
-        border-collapse: collapse;
-      }
-      table,
-      th,
-      td {
-        border: 1px solid #444;
-        padding: 8px;
-        text-align: left;
-      }
-      th {
-        background: #eee;
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Admin Dashboard</h1>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+</head>
 
-    <div class="nav">
-      <a href="{{ url_for('admin_verify_sellers') }}">Verify Sellers</a>
-      <a href="{{ url_for('logout') }}">Logout</a>
+<body class="bg-light">
+
+    <div class="container py-4">
+
+        <h1 class="text-center mb-4">Admin Dashboard</h1>
+
+        <!-- Navigation -->
+        <nav class="mb-4">
+            <a href="{{ url_for('admin_verify_sellers') }}" class="btn btn-primary me-2">Verify Sellers</a>
+            <a href="{{ url_for('logout') }}" class="btn btn-danger">Logout</a>
+            <a href="{{ url_for('admin_verify_products') }}" class="btn btn-warning">Verify Product</a>
+        </nav>
+
+        <!-- Users Table -->
+        <div class="card mb-4 shadow">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">All Users</h4>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for u in users %}
+                        <tr>
+                            <td>{{ u.id }}</td>
+                            <td>{{ u.username }}</td>
+                            <td>{{ u.email }}</td>
+                            <td>{{ u.role }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Products Table -->
+        <div class="card shadow">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">Products</h4>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped mb-0">
+                    <thead class="table-dark">
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for p in products %}
+                        <tr>
+                            <td>{{ p.id }}</td>
+                            <td>{{ p.name }}</td>
+                            <td>{{ p.price }}</td>
+                            <td>{{ p.stock }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 
-    <div class="section">
-      <h2>All Users</h2>
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th>Role</th>
-        </tr>
-        {% for u in users %}
-        <tr>
-          <td>{{ u.id }}</td>
-          <td>{{ u.username }}</td>
-          <td>{{ u.email }}</td>
-          <td>{{ u.role }}</td>
-        </tr>
-        {% endfor %}
-      </table>
-    </div>
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 
-    <div class="section">
-      <h2>Products</h2>
-      <table>
-        <tr>
-          <th>ID</th>
-          <th>Name</th>
-          <th>Price</th>
-          <th>Stock</th>
-        </tr>
-        {% for p in products %}
-        <tr>
-          <td>{{ p.id }}</td>
-          <td>{{ p.name }}</td>
-          <td>{{ p.price }}</td>
-          <td>{{ p.stock }}</td>
-        </tr>
-        {% endfor %}
-      </table>
-    </div>
-  </body>
+</body>
 </html>

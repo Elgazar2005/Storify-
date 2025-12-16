@@ -1,21 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Verify Products</title>
-    <style>
-        body { font-family: Arial; margin: 30px; }
-        li { margin-bottom: 10px; }
-    </style>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
-<body>
+<body class="bg-light">
 
-<h1>Verify Products</h1>
+    <div class="container py-5">
 
-<ul>
-    {% for p in products %}
-        <li>{{ p.name }} — ${{ p.price }} — Status: {{ p.status }}</li>
-    {% endfor %}
-</ul>
+        <h1 class="text-center mb-4">Verify Products</h1>
+
+        <div class="card shadow-sm">
+            <div class="card-body">
+
+                {% if products %}
+                    <ul class="list-group">
+                        {% for p in products %}
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <strong>{{ p.name }}</strong>  
+                                    <span class="text-muted"> — {{ p.price }} EGP</span>
+                                </div>
+
+                                <span class="badge bg-{% if p.status == 'pending' %}warning{% elif p.status == 'approved' %}success{% else %}secondary{% endif %}">
+                                    {{ p.status }}
+                                </span>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p class="text-muted text-center">No products found.</p>
+                {% endif %}
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 </html>

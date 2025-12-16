@@ -29,12 +29,28 @@
         margin-top: 15px;
         padding: 10px 15px;
       }
+      .preview {
+        margin-bottom: 20px;
+      }
+      .preview img {
+        width: 200px;
+        border: 1px solid #aaa;
+        border-radius: 5px;
+      }
     </style>
   </head>
   <body>
+
     <h1>Edit Product</h1>
 
+    <!-- Preview Image -->
+    <div class="preview">
+      <p><strong>Current Image:</strong></p>
+      <img src="{{ product.image }}" alt="Product Image">
+    </div>
+
     <form action="/seller/products/{{ product.id }}/edit" method="POST">
+
       <label>Name:</label>
       <input type="text" name="name" value="{{ product.name }}" required />
 
@@ -50,7 +66,11 @@
       <label>Status:</label>
       <input type="text" name="status" value="{{ product.status }}" required />
 
+      <label>Image URL:</label>
+      <input type="text" name="image" value="{{ product.image }}" required />
+
       <button type="submit">Save Changes</button>
     </form>
+
   </body>
 </html>

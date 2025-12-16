@@ -15,6 +15,12 @@
             padding: 15px;
             margin-bottom: 10px;
         }
+        .product img {
+            width: 150px;
+            border-radius: 5px;
+            display: block;
+            margin-bottom: 10px;
+        }
         a {
             color: blue;
             text-decoration: none;
@@ -27,9 +33,12 @@
 
 {% for p in products %}
     <div class="product">
+        <img src="{{ p.image }}" alt="Product Image">
+
         <h3>{{ p.name }}</h3>
         <p>Price: ${{ p.price }}</p>
         <p>Status: {{ p.status }}</p>
+
         <a href="{{ url_for('edit_product', product_id=p.id) }}">Edit</a>
     </div>
 {% endfor %}
