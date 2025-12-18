@@ -1,5 +1,5 @@
 from Models.product import Product
-from core.file_singleton import FileSingleton
+from core.file_singletone import FileSingleton
 
 
 class ProductRepository:

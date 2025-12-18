@@ -1,6 +1,6 @@
 from Models.cart import Cart, CartItem
 from repositories.product_repository import ProductRepository
-from core.file_singleton import FileSingleton
+from core.file_singletone import FileSingleton
 
 
 class CartRepository:
