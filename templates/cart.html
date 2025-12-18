@@ -2,131 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    
     <title>Your Cart</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 </head>
 
 <body class="bg-light">
-<nav class="navbar navbar-expand-lg bg-primary navbar-dark px-4 fixed-top">
-      <div class="container-fluid">
-        <!-- Brand -->
-        <a class="navbar-brand fw-bold" href="/">Storify</a>
 
-        <!-- Toggler -->
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <!-- Links -->
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-3">
-            <li class="nav-item">
-              <a class="nav-link fw-bold text-white" href="/">Home</a>
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="nav-link fw-bold text-white"
-                href="{{ url_for('list_products') }}"
-              >
-                Products
-              </a>
-            </li>
-
-            <li class="nav-item">
-              <a class="nav-link fw-bold text-white" href="#">About</a>
-            </li>
-
-            <li class="nav-item">
-              <a
-                class="btn btn-light fw-bold ms-lg-3"
-                href="{{ url_for('login') }}"
-              >
-                Login
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
 <div class="container mt-5">
-
-    <h1 class="mb-4 text-center">🛒 Your Cart</h1>
+    <h1 class="text-center mb-4">🛒 Your Cart</h1>
 
     {% if not cart %}
         <div class="alert alert-warning text-center">No open cart found.</div>
 
+    {% elif items|length == 0 %}
+        <div class="alert alert-info text-center">Your cart is empty.</div>
+
     {% else %}
-        {% if items|length == 0 %}
-            <div class="alert alert-info text-center">Your cart is empty.</div>
+        <table class="table table-bordered">
+            <thead class="table-dark">
+                <tr>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Subtotal</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in items %}
+                    <tr>
+                        <td>{{ row.product.name }}</td>
+                        <td>{{ row.product.price }}</td>
+                        <td>{{ row.item.quantity }}</td>
+                        <td>{{ row.product.price * row.item.quantity }}</td>
+                        <td>
+                            <form method="post"
+                                  action="{{ url_for('cart.remove_from_cart', product_id=row.product.id) }}">
+                                <button class="btn btn-danger btn-sm">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
 
-        {% else %}
-        
-        <div class="card shadow">
-            <div class="card-body">
-                
-                <table class="table table-bordered table-striped">
-                    <thead class="table-dark">
-                        <tr>
-                            <th>Product</th>
-                            <th>Price (EGP)</th>
-                            <th>Quantity</th>
-                            <th>Subtotal</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        {% set total = 0 %}
-                        {% for row in items %}
-                            {% set item = row.item %}
-                            {% set product = row.product %}
-                            {% set subtotal = product.price * item.quantity %}
-                            {% set total = total + subtotal %}
-
-                            <tr>
-                                <td>{{ product.name }}</td>
-                                <td>{{ product.price }}</td>
-                                <td>{{ item.quantity }}</td>
-                                <td>{{ subtotal }}</td>
-                                <td>
-                                    <form action="{{ url_for('cart.remove_from_cart', product_id=product.id) }}" method="post">
-                                        <button class="btn btn-danger btn-sm">Remove</button>
-                                    </form>
-                                </td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-
-                <h3 class="text-end mt-3">Total: 
-                    <span class="text-success fw-bold">{{ total }} EGP</span>
-                </h3>
-
-            </div>
-        </div>
-
-        {% endif %}
+        <h3 class="text-end">
+            Total:
+            <span class="text-success fw-bold">{{ total_price }} EGP</span>
+        </h3>
     {% endif %}
-
-    <div class="mt-4 text-center">
-        <a href="{{ url_for('product.list_products') }}" class="btn btn-primary">
-            ← Back to Products
-        </a>
-    </div>
-
 </div>
-<script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
 
 </body>
 </html>
