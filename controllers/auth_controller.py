@@ -1,8 +1,9 @@
 from flask import Blueprint, render_template, request, redirect, session
 from repositories.user_repository import UserRepository
+from repositories.repository_factory import RepositoryFactory
 
 auth_bp = Blueprint("auth", __name__)
-user_repo = UserRepository()
+user_repo = RepositoryFactory.get_user()
 
 
 @auth_bp.route("/login", methods=["GET", "POST"])
