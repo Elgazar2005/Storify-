@@ -1,11 +1,10 @@
 from flask import Blueprint, render_template, session, redirect
-from repositories.user_repository import UserRepository
-from repositories.product_repository import ProductRepository
+from repositories.repository_factory import RepositoryFactory
 
 admin_bp = Blueprint("admin", __name__)
 
-user_repo = UserRepository()
-product_repo = ProductRepository()
+user_repo = RepositoryFactory.get_user()
+product_repo = RepositoryFactory.get_product()
 
 
 def require_admin():

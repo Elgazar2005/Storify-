@@ -1,12 +1,10 @@
 from flask import Blueprint, render_template, session, redirect
-from repositories.product_repository import ProductRepository
-from repositories.order_repository import OrderRepository
-from repositories.notification_repository import NotificationRepository
+from repositories.repository_factory import RepositoryFactory
 
 seller_bp = Blueprint("seller", __name__)
-product_repo = ProductRepository()
-order_repo = OrderRepository()
-notif_repo = NotificationRepository()
+product_repo = RepositoryFactory.get_product()
+order_repo = RepositoryFactory.get_order()
+notif_repo = RepositoryFactory.get_notification()
 def require_seller():
     if not session.get("user_id") or session.get("role") != "seller":
         return False
