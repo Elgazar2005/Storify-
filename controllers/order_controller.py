@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template
-from repositories.order_repository import OrderRepository
+from repositories.repository_factory import RepositoryFactory
 
 order_bp = Blueprint("order", __name__)
-order_repo = OrderRepository()
+order_repo = RepositoryFactory.get_order()
 
 @order_bp.route("/orders")
 def orders_list():
