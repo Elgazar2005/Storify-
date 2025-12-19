@@ -1,7 +1,13 @@
-class Order:
-    def __init__(self, order_id, customer_id, created_at, status, total_amount):
-        self.order_id = order_id
-        self.customer_id = customer_id
-        self.created_at = created_at
-        self.status = status
-        self.total_amount = total_amount
+from Models.order import Order
+
+def test_order_creation():
+    order = Order(1, 10, "2024-01-01", "pending", 250)
+
+    assert order.order_id == 1
+    assert order.customer_id == 10
+    assert order.status == "pending"
+    assert order.total_amount == 250
+
+def test_order_repr():
+    order = Order(1, 10, "2024-01-01", "pending", 250)
+    assert repr(order) == "<Order 1 - Customer 10 - pending>"

@@ -6,3 +6,5 @@ class Notification:
         self.type = type
         self.is_read = is_read
         self.created_at = created_at
+    def __repr__(self):
+        return f"<Notification {self.notification_id} to User {self.user_id}>"

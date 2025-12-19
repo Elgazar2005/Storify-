@@ -5,3 +5,5 @@ class Order:
         self.created_at = created_at
         self.status = status
         self.total_amount = total_amount
+    def __repr__(self):
+        return f"<Order {self.order_id} - Customer {self.customer_id} - {self.status}>"
