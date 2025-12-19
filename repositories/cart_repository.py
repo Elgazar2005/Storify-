@@ -1,4 +1,5 @@
-from Models.cart import Cart, CartItem
+from Models.cart import Cart
+from Models.cartitem import CartItem
 from repositories.product_repository import ProductRepository
 from core.file_singletone import FileSingleton
 
