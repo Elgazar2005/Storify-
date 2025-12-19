@@ -6,18 +6,19 @@ from repositories.cart_repository import CartRepository
 from repositories.product_repository import ProductRepository
 
 class RepositoryFactory:
+    file = FileSingleton()
     @staticmethod
     def get_notification():
-        return NotificationRepository
+        return NotificationRepository(RepositoryFactory.file)
     @staticmethod
     def get_order():
-        return OrderRepository
+        return OrderRepository(RepositoryFactory.file)
     @staticmethod
     def get_user():
-        return UserRepository
+        return UserRepository(RepositoryFactory.file)
     @staticmethod
     def get_cart():
-        return CartRepository
+        return CartRepository(RepositoryFactory.file)
     @staticmethod
     def get_product():
-        return ProductRepository
+        return ProductRepository(RepositoryFactory.file)
