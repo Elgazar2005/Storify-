@@ -1,11 +1,32 @@
-class Product:
-    def __init__(self, id, name, description, price, stock, image):
-        self.id = int(id)
-        self.name = name
-        self.description = description
-        self.price = float(price)
-        self.stock = int(stock)
-        self.image = image   
+from Models.product import Product
 
-    def __repr__(self):
-        return f"<Product {self.id} - {self.name}>"
+
+def test_product_creation():
+    product = Product(
+        id=1,
+        name="Laptop",
+        description="Gaming laptop",
+        price=15000,
+        stock=5,
+        image="laptop.png"
+    )
+
+    assert product.id == 1
+    assert product.name == "Laptop"
+    assert product.description == "Gaming laptop"
+    assert product.price == 15000.0
+    assert product.stock == 5
+    assert product.image == "laptop.png"
+
+
+def test_product_repr():
+    product = Product(
+        id=2,
+        name="Phone",
+        description="Smart phone",
+        price=8000,
+        stock=3,
+        image="phone.png"
+    )
+
+    assert repr(product) == "<Product 2 - Phone>"

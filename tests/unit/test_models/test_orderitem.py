@@ -1,9 +1,14 @@
-class OrderItem:
-    def __init__(self, order_item_id, order_id, product_id, product_name, quantity, price,seller_id):
-        self.order_item_id = order_item_id
-        self.order_id = order_id
-        self.product_id = product_id
-        self.product_name = product_name
-        self.quantity = quantity
-        self.price = price
-        self.seller_id = seller_id
+from Models.orderitem import OrderItem
+
+def test_order_item_creation():
+    item = OrderItem(1, 2, 3, "Phone", 2, 500.0, 9)
+
+    assert item.order_item_id == 1
+    assert item.product_name == "Phone"
+    assert item.quantity == 2
+    assert item.price == 500.0
+    assert item.seller_id == 9
+
+def test_order_item_repr():
+    item = OrderItem(1, 2, 3, "Phone", 2, 500.0, 9)
+    assert repr(item) == "<OrderItem 1 - Phone (x2)>"

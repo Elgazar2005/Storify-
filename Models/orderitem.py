@@ -7,3 +7,5 @@ class OrderItem:
         self.quantity = quantity
         self.price = price
         self.seller_id = seller_id
+    def __repr__(self):
+        return f"<OrderItem {self.order_item_id} - {self.product_name} (x{self.quantity})>"

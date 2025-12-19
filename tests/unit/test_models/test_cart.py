@@ -1,10 +1,12 @@
-class Cart:
-    def __init__(self, id, user_id, status="open"):
-        self.id = int(id)
-        self.user_id = int(user_id)
-        self.status = status
+from Models.cart import Cart
 
-    def __repr__(self):
-        return f"<Cart {self.id} - User {self.user_id} - {self.status}>"
+def test_cart_creation():
+    cart = Cart(1, 10)
 
+    assert cart.id == 1
+    assert cart.user_id == 10
+    assert cart.status == "open"
 
+def test_cart_repr():
+    cart = Cart(1, 10, "open")
+    assert repr(cart) == "<Cart 1 - User 10 - open>"

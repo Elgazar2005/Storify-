@@ -1,8 +1,14 @@
 from Models.user import User
 
-class Admin(User):
-    def __init__(self, id, username, email, password):
-        super().__init__(id, username, email, password, role="admin")
+def test_user_creation():
+    user = User(1, "omar", "omar@test.com", "1234", "customer")
 
-    def __repr__(self):
-        return f"<Admin {self.id} - {self.username}>"
+    assert user.id == 1
+    assert user.username == "omar"
+    assert user.email == "omar@test.com"
+    assert user.password == "1234"
+    assert user.role == "customer"
+
+def test_user_repr():
+    user = User(1, "omar", "omar@test.com", "1234", "customer")
+    assert repr(user) == "<User 1 - omar (customer)>"
