@@ -9,7 +9,7 @@ product_repo = ProductRepository()
 def list_products():
     products = product_repo.get_all()
     return render_template("products.html", products=products)
-
+ 
 
 @product_bp.route("/products/<int:product_id>")
 def product_details(product_id):

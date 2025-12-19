@@ -253,11 +253,25 @@ def product_details(product_id):
 def cart():
     cart_items = get_session_cart()
     items_with_products = []
+    total_price = 0.0
+
     for it in cart_items:
         prod = get_product_by_id(it["product_id"])
         if prod:
-            items_with_products.append({"item": it, "product": prod})
-    return render_template("cart.html", cart=cart_items, items=items_with_products)
+            subtotal = float(prod["price"]) * int(it["quantity"])
+            total_price += subtotal
+            items_with_products.append({
+                "item": it,
+                "product": prod
+            })
+
+    return render_template(
+        "cart.html",
+        cart=cart_items,
+        items=items_with_products,
+        total_price=total_price
+    )
+
 
 @app.route("/cart/add/<int:product_id>", methods=["POST"])
 def add_to_cart(product_id):
