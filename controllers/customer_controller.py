@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request, redirect, url_for
-from repositories.repository_factory import RepositoryFactory
+from repositories.user_repository import UserRepository
 
 user_bp = Blueprint("user", __name__)
-user_repo = RepositoryFactory.get_user()
+user_repo = UserRepository()
 
 
 @user_bp.route("/users")

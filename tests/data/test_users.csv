@@ -1,7 +1,3 @@
 id,username,email,password,role
-1,samaa,samaa@gmail.com,123456,customer
-2,mohmed,mohmed@gmail.com,123456,seller
-3,ahmed,ahmed@gmail.com,123456,customer
-4,admin,admin@gmail.com,admin123,admin
-5,ahmed,ahmedd@gmail.com,123456,customer
-6,Omar,omarelgazar715@gmail.com,ahmed2005,customer
+1,test,test@test.com,1234,customer
+2,seller,seller@test.com,1234,seller
