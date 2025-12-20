@@ -2,7 +2,6 @@ import pytest
 import sys
 import os
 
-# نضيف root project للـ path
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 sys.path.insert(0, BASE_DIR)
 
