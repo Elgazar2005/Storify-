@@ -6,6 +6,10 @@ class UserRepository:
     FIELDNAMES = ["id", "username", "email", "password", "role", "store_name"]
 
     def __init__(self, file_singleton=None, file_path=None):
+        """
+        - Production: file_singleton is passed from RepositoryFactory
+        - Tests: file_path is passed directly
+        """
         if file_singleton:
             self.file = file_singleton
             self.file_path = self.FILE_PATH
