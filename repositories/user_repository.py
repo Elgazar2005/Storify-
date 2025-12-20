@@ -1,10 +1,13 @@
 import csv
-from Models.user import User
-from core.file_singletone import FileSingleton
+from models.user import User
 
 class UserRepository:
-    file = FileSingleton()
     FILE_PATH = "data/users.csv"
+    FIELDNAMES = ["id", "username", "email", "password", "role", "store_name"]
+
+    def __init__(self, file_singleton):
+        # هنا بنستقبل الـ singleton من الـ factory
+        self.file = file_singleton
 
     def get_all(self):
         users = []
@@ -20,19 +23,17 @@ class UserRepository:
                     store_name=row.get("store_name", "")
                 ))
         except FileNotFoundError:
-            return []
+            pass
         return users
 
     def get_by_id(self, user_id):
         for user in self.get_all():
-            if int(user.id) == int(user_id):
+            if user.id == user_id:
                 return user
         return None
 
     def create_user(self, username, email, password, role, store_name=""):
         users = self.get_all()
-
-        # generate new ID
         new_id = 1 if not users else users[-1].id + 1
 
         new_user = User(
@@ -44,10 +45,9 @@ class UserRepository:
             store_name=store_name
         )
 
-        # write row using Singleton
         self.file.append_csv(
             self.FILE_PATH,
-            ["id", "username", "email", "password", "role", "store_name"],
+            self.FIELDNAMES,
             new_user.to_dict()
         )
 
