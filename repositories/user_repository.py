@@ -1,18 +1,26 @@
-import csv
-from models.user import User
+from Models.user import User
+from core.file_singletone import FileSingleton
 
 class UserRepository:
     FILE_PATH = "data/users.csv"
     FIELDNAMES = ["id", "username", "email", "password", "role", "store_name"]
 
-    def __init__(self, file_singleton):
-        # هنا بنستقبل الـ singleton من الـ factory
-        self.file = file_singleton
+    def __init__(self, file_singleton=None, file_path=None):
+        """
+        - Production: file_singleton is passed from RepositoryFactory
+        - Tests: file_path is passed directly
+        """
+        if file_singleton:
+            self.file = file_singleton
+            self.file_path = self.FILE_PATH
+        else:
+            self.file = FileSingleton()
+            self.file_path = file_path or self.FILE_PATH
 
     def get_all(self):
         users = []
         try:
-            rows = self.file.read_csv(self.FILE_PATH)
+            rows = self.file.read_csv(self.file_path)
             for row in rows:
                 users.append(User(
                     id=int(row["id"]),
@@ -46,7 +54,7 @@ class UserRepository:
         )
 
         self.file.append_csv(
-            self.FILE_PATH,
+            self.file_path,
             self.FIELDNAMES,
             new_user.to_dict()
         )
