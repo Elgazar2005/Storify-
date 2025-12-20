@@ -422,4 +422,4 @@ app.add_url_rule("/seller/products/<int:product_id>/edit", endpoint="edit_produc
 app.add_url_rule("/seller/orders", endpoint="seller_orders", view_func=seller_orders)
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000, debug=True)
