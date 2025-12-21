@@ -25,3 +25,4 @@ id,username,email,password,role
 24,newuser,new@test.com,1234,customer,
 25,newuser,new@test.com,1234,customer,
 26,newuser,new@test.com,1234,customer,
+27,newuser,new@test.com,1234,customer,
